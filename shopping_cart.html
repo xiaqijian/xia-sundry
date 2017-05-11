@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全选功能</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<script src="https://unpkg.com/vue@2.3.3/dist/vue.js"></script>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+	 <style type="text/css">
+	 	body {
+	 		margin:0;
+	 		padding:0;
+	 	}
+	 	.app {
+	 		width: 60%;
+	 		overflow: hidden;
+	 		margin:0 auto;
+	 	}
+		.row>div {
+			border: 1px solid #efefef;
+			/*border-bottom: none;*/
+			text-align:center;
+		}
+		.row:nth-child(1)>div{
+			margin-bottom: 10px;
+		}
+		.rowsp>div{
+			line-height: 40px;
+			height: 40px;
+
+		}
+		.input-group {
+			margin-bottom: 20px;
+		}
+	 </style>
+	<div class="app">
+	    <div class="row">
+		  <div class="col-md-2">
+		  	<input type="checkbox" v-model="allChecked">全选
+		  </div>
+		  <div class="col-md-4">商品</div>
+		  <div class="col-md-2">数量</div>
+		  <div class="col-md-2">价格</div>
+		  <div class="col-md-2">操作</div>
+		</div>
+		<div class="row rowsp" v-for="item in lists">
+		  <div class="col-md-2">
+		  		<input type="checkbox" v-model="item.checked">
+		  </div>
+		  <div class="col-md-4">{{item.name}}</div>
+		  <div class="col-md-2">1件</div>
+		  <div class="col-md-2">{{item.price}}元</div>
+		  <div class="col-md-2">
+		  	<button type="button" class="btn btn-danger" @click="removelist">{{item.del}}</button>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-8"></div>
+		  <div class="col-md-2" class="num" style="color: red;line-height: 20px;height: 20px;">总共：{{checkedCount}}件</div>
+		  <div class="col-md-2" class="price" style="color: red; line-height: 20px;height: 20px;">总共：{{count}}元</div>
+		</div>
+		<!--  -->
+		<div style="margin-top:40px;">
+			<h1>添加商品信息</h1>
+			<div class="input-group">
+			  <span class="input-group-addon" id="basic-addon1">商品</span>
+			  <input type="text" class="form-control"  aria-describedby="basic-addon1" v-model="sp" placeholder="如：衣服">
+			</div>
+			<div class="input-group">
+			  <span class="input-group-addon" id="basic-addon1">商品单价</span>
+			  <input type="text" class="form-control"  aria-describedby="basic-addon1" v-model="jg">
+			</div>
+			<button type="button" class="btn btn-info" style="width: 100%;" @click="addlist">添加</button>
+		</div>
+	</div>
+	<script>
+		var _list = [
+			{
+				name: '衣服',
+				price: 18,
+				checked: false,
+				del: '删除'
+			},
+			{
+				name: '衣服',
+				price: 18,
+				checked: false,
+				del: '删除'
+			},
+			{
+				name: '衣服',
+				price: 18,
+				checked: false,
+				del: '删除'
+			}
+		];
+    new Vue({
+        el: '.app',
+        computed: {
+            allChecked: {
+                get: function(){
+                    return this.checkedCount == this.lists.length;
+                },
+                set: function(value){
+                    this.lists.forEach(function(item){
+                        item.checked = value;
+                        
+                    })
+                    return value;
+                }
+            },
+            checkedCount: {
+                get: function(){
+                    var i = 0;
+                    this.lists.forEach(function(item){
+                        if(item.checked == true) i++;
+                    })
+                    return i;
+                }
+            },
+            // 计算总数 
+            count: {
+            	get: function () {
+            		var cou = 0;
+            		this.lists.forEach(function(item){
+            			console.log(item.price);
+            			if(item.checked == true) cou+=item.price;
+            		})
+            		return cou
+            	}
+            }
+        },
+        data:{
+            lists: _list,
+            sp: '',
+            jg: 0
+        },
+        methods: {
+        	addlist: function () {
+        		if (this.sp ==='' || this.jg === '') {
+        			alert("商品名称或者价格不能为空哦");
+        			return
+        		}
+        		_list.push({
+        			name: this.sp,
+        			price: parseFloat(this.jg),
+        			checked: false,
+        			del: '删除'
+        		});
+        		console.log(this.sp);
+        		this.sp = '';
+        		this.jg = 0
+        	},
+        	removelist: function (item) {
+        		this.lists.splice(this.lists.indexOf(item), 1)
+        	}
+        }
+    });
+
+	 </script>
+	 	
+</body>
+</html>
