@@ -1,3 +1,10 @@
+DOM
+--
+clientWidth: width+padding === scrollWidth
+
+offsetWidth: width+padding+border 
+
+
 BOM
 --
 ![img](http://www.2cto.com/uploadfile/Collfiles/20140914/2014091409260873.png)
