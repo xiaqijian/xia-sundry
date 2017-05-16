@@ -10,6 +10,7 @@ BOM
 
 
 innerHeight: 按照实际窗口大小
+
 outerHeight：按照窗口大小
 
 ![img](http://www.2cto.com/uploadfile/Collfiles/20140914/2014091409260873.png)
