@@ -25,3 +25,18 @@ work   ALL=(ALL)     ALL #添加的这一行内容
 #### Linux命令手册[Linux books](http://man.linuxde.net/)
 
 #### [linux](http://www.runoob.com/linux/linux-command-manual.html) 
+
+
+### 查看centos服务器配置
+```
+# uname -a   # 查看内核/操作系统/CPU信息 
+# cat /etc/issue 
+# cat /etc/redhat-release # 查看操作系统版本 
+# cat /proc/cpuinfo  # 查看CPU信息 
+# grep MemTotal /proc/meminfo # 查看内存总量
+# hostname   # 查看计算机名 
+# lspci -tv   # 列出所有PCI设备 
+# lsusb -tv   # 列出所有USB设备 
+# lsmod    # 列出加载的内核模块 
+# env    # 查看环境变量
+```
