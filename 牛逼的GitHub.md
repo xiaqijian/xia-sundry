@@ -9,3 +9,9 @@
 
 -[bailicangdu](https://github.com/bailicangdu)
 > vue.js项目，饿了么，商家后台管理系统
+- [qiu-deqing](https://github.com/qiu-deqing)
+> 总结了前端学习[方法](https://github.com/qiu-deqing/FE-learning) 
+
+
+
+
