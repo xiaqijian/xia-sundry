@@ -7,10 +7,12 @@
 - [xiaoyu2er](https://github.com/xiaoyu2er/productivity-tools)
 > 好用的工具集
 
--[bailicangdu](https://github.com/bailicangdu)
+- [bailicangdu](https://github.com/bailicangdu)
 > vue.js项目，饿了么，商家后台管理系统
 - [qiu-deqing](https://github.com/qiu-deqing)
 > 总结了前端学习[方法](https://github.com/qiu-deqing/FE-learning) 
+- [CaptainLiao](https://github.com/CaptainLiao/node)
+> Node反向代理解决跨域
 
 [天猫前端团队](https://github.com/tmallfe/tmallfe.github.io/issues)
 > 天猫前端团队
