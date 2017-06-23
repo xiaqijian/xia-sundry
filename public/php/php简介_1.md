@@ -1,8 +1,10 @@
 导航
 --
 [PHP简介](https://github.com/xiaqijian/xia-blog/edit/master/public/php/php%E7%AE%80%E4%BB%8B_1.md#PHP简介)
-[PHP语法](https://github.com/xiaqijian/xia-blog/edit/master/public/php/php%E7%AE%80%E4%BB%8B_1.mdPHP语法)
-[PHP简介](https://github.com/xiaqijian/xia-blog/edit/master/public/php/php%E7%AE%80%E4%BB%8B_1.md#PHP简介)
+
+[PHP语法](#PHP语法)
+
+[PHP简介](#PHP注释)
 
 
 
