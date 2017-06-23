@@ -6,7 +6,7 @@
 
 [PHP简介](#PHP注释)
 
-[xiaxia][#xiaxia]
+[xiaxia](#xiaxia)
 
 PHP简介
 --
