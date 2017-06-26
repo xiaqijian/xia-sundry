@@ -7,4 +7,4 @@ node可以做高性能的web服务器
 - 模块的加载
  require使用
  
- export可以导出一个对象
+ exports可以导出一个对象
