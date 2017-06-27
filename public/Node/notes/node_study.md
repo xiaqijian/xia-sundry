@@ -4,6 +4,8 @@ __filename: 当前文件的名称
 
 __dirname：当前文件路径
 
+全局global对象现在不是window
+
 **module.exports vs exports**
 --
 
