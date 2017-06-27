@@ -8,3 +8,8 @@ node可以做高性能的web服务器
  require使用
  
  exports可以导出一个对象
+> 2017.6.27
+- node
+package包，在安装node，就默认安装npm包，
+
+在package.json文件下可以配置很多信息，例如入口文件内容，还要版本信息，所需要的第三方包
