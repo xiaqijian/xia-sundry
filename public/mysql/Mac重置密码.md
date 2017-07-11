@@ -12,7 +12,7 @@ $ sudo su  // 获取当前用户权限，会让你输入mac密码
 $ mysqld_safe --skip-grant-tables --skip-networking &
 ```
 
-#### 然后打开先得终端
+#### 然后打开*新*得终端
 1. 输入`mysql -uroot -p`
 
 2. 输入
