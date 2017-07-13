@@ -20,6 +20,9 @@
 [滴滴前端团队](https://github.com/DDFE/DDFE-blog)
 > 滴滴团队
 
+[掘金翻译文章](https://github.com/xitu/gold-miner)
+> 掘金翻译计划
+
 工具
 --
 
