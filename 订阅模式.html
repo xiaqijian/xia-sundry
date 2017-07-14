@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>观察者模式</title>
+</head>
+<body>
+<button id="count">点我</button>
+<div id="show"></div>
+<script>
+    //我的个人理解
+    //发布者首先需要一个对象来保存事件的回调函数，这个对象的属性就是事件类型，比如{"click":[fn1,fn2],"mouseover":[fn3,fn4]}
+    //订阅事件:首先要判断这个事件类型是否存在当前的对象上，如果不存在那就初始化一下就是添加这个属性，并且给这个属性的值设置为空数组
+    //如果已经存在了那么久开始把该对调函数push进去对应的属性的值， 该值为一个数组
+    //发布事件:发布事件就要一个个的通知订阅者，还有就是你发布了什么事件。这里要有if判断，
+    // 先从参数中取出要发布事件的key,然后获取到key对应的回调函数数组，取出数组后先判断数组是否存在或者数组长度是否为0，如果不存在或者为0
+    //就结束程序，若上述条件不成立就执行for循环，一次遍历回调函数数组，并执行里面的函数，这里需要改变回调函数的this指向。防止丢之
+    //this。
+    //移出事件：先判断要移出的key的值是否为空，若空则退出程序否则再判断是否传入了要移出哪个回调函数，若空，则认为要移出全部的函数，就把数组长度设置为0
+    //
+  //下面是js设计模式与开发实践上的实现过程
+    var Event=(function(){
+            var clientList={},
+                listen,
+                trigger,
+                remove;
+        listen=function(key,fn){
+            if(!clientList[key]){
+                clientList[key]=[];
+            }
+            clientList[key].push(fn);
+        };
+        trigger=function(){
+            var key=Array.prototype.shift.call(arguments),
+                cb=clientList[key];
+            if(!cb||cb.length==0){
+                return false;//如果没有保存回调函数就退出程序
+            }
+            for(var i=0;i<cb.length;i++ ){
+                cb[i].apply(this,arguments);//为什么要用applly呢，这是为了把触发时传入的参数传入给cb[i]对应的回调函数里面使用并且还要改变this指向
+            }
+        };
+        remove=function (key,fn) {
+
+            var cb=clientList[key];
+            if(!cb){
+                return false;//如果要移除的key的值为空就代表没有人订阅该key和设置回调函数则直接返回
+            }
+            if(!fn){//如果没有传入具体的回调函数，表示需要取消key对应的消息的所有订阅
+                cb&&(cb.length=0);//这里cb是已经存在了就把cb的length设置为0.我有疑问，到这里其实cb不会不存在了吧上面如果不存在就退出了如何会走到这一步？
+            }
+            else{
+                for(var l=0;l<cb.length;l++){
+                    var _cb=cb[l];
+                    if(_cb===fn){//寻找哪个和要删除的回调函数一样
+                        cb.splice(l,1);//从l处删除一个元素
+                    }
+                }
+            }
+        };
+        return {
+            listen:listen,
+            trigger:trigger,
+            remove:remove
+        }//这里返回这个对象其实是相当于中介代理的意思，请看下面的实际例子解释：
+//我们给每个发布者对象都添加了listen 和trigger 方法，以及一个缓存列表clientList，
+//这其实是一种资源浪费。
+//小明跟售楼处对象还是存在一定的耦合性，小明至少要知道售楼处对象的名字是
+//才能顺利的订阅到事件。
+//因此返回一个通用的对象，不必知道这个对象的名字，只需要把这个对象的一个引用给一个变量就行了
+    })();
+    Event.listen("A",fn1=function(data){
+        console.log(data);
+    })
+    Event.listen("A",fn2=function(data){
+        console.log(data);
+    })
+    Event.remove("A",fn1);
+    Event.trigger("A","猴赛雷啊");
+</script>
+<script>
+    var a=(function(){
+        var count=0;
+        var btn=document.getElementById('count');
+        btn.onclick=function () {
+            Event.trigger('add',count++);
+        }
+    })();
+    var b=(function () {
+        var div=document.getElementById('show');
+        Event.listen('add',function(data){
+            div.innerHTML=data;
+        })
+    })();
+</script>
+</body>
+</html>
