@@ -4,6 +4,9 @@
 - [冴羽](https://github.com/mqyqingfeng) 
 > JavaScript深入系列已完结
 
+- [波同学](http://www.jianshu.com/p/cd3fee40ef59) 
+> 前端进阶系列
+
 - [xiaoyu2er](https://github.com/xiaoyu2er/productivity-tools)
 > 好用的工具集
 
