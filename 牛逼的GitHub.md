@@ -28,6 +28,8 @@
 
 [掘金翻译文章](https://github.com/xitu/gold-miner)
 > 掘金翻译计划
+[前端日报](https://github.com/daochouwangu/webfrontdaily/issues)
+> 前端日报，有一个分享js
 
 工具
 --
