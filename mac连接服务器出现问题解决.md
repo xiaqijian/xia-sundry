@@ -28,3 +28,22 @@ ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAs7tE1nlC8YUMHkJUmSpFeJCc0ztFQiWGIKlyrnf4KVCz
 ```
 
 提一下：阿里云服务器默认端口是关闭的，第一次使用需要打开一下
+
+## 如果以上方法没有效果，暴力解决
+
+```
+rm -rf ~/.ssh/known_hosts  
+
+```
+## SSH 出现 The authenticity of host xxx can't be established.
+
+解决方案
+
+```
+ssh  -o StrictHostKeyChecking=no  192.168.xxx.xxx
+```
+
+
+
+
+
