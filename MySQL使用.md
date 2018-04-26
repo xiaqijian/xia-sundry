@@ -41,7 +41,3 @@ $mysql> EXIT
 
 ### 4. 重启mysql就可以啦
 
-
-
-3mysql
-3
