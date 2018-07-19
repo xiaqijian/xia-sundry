@@ -12,3 +12,8 @@ JavaScript
 --
 
 - [阮一峰的JavaScript教程仓库 wangdoc / javascript-tutorial](https://github.com/wangdoc/javascript-tutorial)
+- [front-end-interview-handbook](https://github.com/yangshun/front-end-interview-handbook)
+  - 这个是JavaScript面试，及中文答案
+- [RubyLouvre / mobileHack](https://github.com/RubyLouvre/mobileHack)
+  - 这里收集了许多移动端上遇到的各种坑
+
