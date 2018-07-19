@@ -19,3 +19,15 @@ JavaScript
 - [常用的js代码集](https://github.com/jsfront/src/blob/master/js.md)
 - [常用的css代码集](https://github.com/jsfront/src/blob/master/css.md)
 
+Python
+--
+- [jobbole / awesome-python-cn](https://github.com/jobbole/awesome-python-cn)
+  - Python资源大全中文版，包括：Web框架、网络爬虫、模板引擎、数据库、数据可视化、图片处理等
+- []()
+
+
+好用的开源软件
+--
+- [phobal / ivideo](https://github.com/phobal/ivideo)
+  - 一个可以观看国内主流视频平台所有视频的客户端
+  
