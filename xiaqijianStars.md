@@ -16,4 +16,6 @@ JavaScript
   - 这个是JavaScript面试，及中文答案
 - [RubyLouvre / mobileHack](https://github.com/RubyLouvre/mobileHack)
   - 这里收集了许多移动端上遇到的各种坑
+- [常用的js代码集](https://github.com/jsfront/src/blob/master/js.md)
+- [常用的css代码集](https://github.com/jsfront/src/blob/master/css.md)
 
