@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+  <!-- <script src="main.js"></script> -->
+  <!-- import Vue.js -->
+  <!-- <script src="https://vuejs.org/js/vue.min.js"></script> -->
+  <script src="https://cdn.bootcss.com/vue/2.5.15/vue.min.js"></script>
+  <!-- import stylesheet -->
+  <!-- <link rel="stylesheet" href="http://unpkg.com/iview/dist/styles/iview.css"> -->
+  <link href="https://cdn.bootcss.com/iview/2.14.0/styles/iview.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- import iView -->
+  <!-- <script src="http://unpkg.com/iview/dist/iview.min.js"></script> -->
+  <script src="https://cdn.bootcss.com/iview/2.14.0/iview.min.js"></script>
+  <script src="http://cdn.bootcss.com/moment.js/2.22.1/moment.min.js"></script>
+</head>
+
+<body>
+  <style>
+    .app {
+      width: 50%;
+      padding: 30px;
+    }
+
+    .bg {
+      background: url(https://upload-images.jianshu.io/upload_images/1379609-18cfd5e683993974.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240);      
+      width: 100%;
+      height: 168px;
+      position: absolute;
+      top: 0;
+      opacity: 0.5;
+    }
+
+    .bgbox {
+      /* border: 1px solid red; */
+      height: 168px;
+      position: relative;
+    }
+
+    .slider {
+      /* float: left; */
+      position: absolute;
+      width: 98%;
+      z-index: 999999;
+      top: 60px;
+
+    }
+  </style>
+  <section class="app">
+    <div id="app">
+      <h2>{{year}}年</h2>
+      
+      <div class="bgbox">
+        <div class="slider">
+          <Slider v-model="value2" :min="1440" :max="times"  range :tip-format="formatdata" @on-input="changeval"></Slider>
+        </div>
+        <div class="bg"></div>
+      </div>
+
+      <!-- 时间戳总：{{dis}}<br> {{a}} -->
+
+      <div>选择中时间：{{year}}年{{date}} -- {{year}}年{{date1}}</div>
+
+      <Button type="info" @click="preYear" class="btn btn-success">上一年</Button>
+      <Button type="info" @click="nextYear" class="btn btn-success">下一年</Button>
+
+    </div>
+  </section>
+  <script>
+
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          value2: [],
+          date:'',
+          date1:'',
+          year: 2018,
+          days: 365,
+          // times: 525600, // 总分钟
+          erday: 29
+        }
+      },
+      computed: {
+        times () {
+          return this.days*24*60
+        }
+      },
+      mounted() {
+        this.jugeYear(this.year)
+      },
+      methods: {
+         preYear() {
+          this.year = this.year - 1
+          this.jugeYear(this.year)
+        },
+        nextYear() {
+          this.year = this.year + 1
+          this.jugeYear(this.year)
+        },
+        jugeYear(year) {
+          let inp = year
+          if (isNaN(inp) || inp < 0 || inp == '') {
+            console.log('输入错误,或必须大于0,或不能为空')
+          } else if (inp % 4 == 0 && inp % 100 != 0 || inp % 400 == 0) {
+            console.log('闰年')
+            // this.erday = 29
+            this.days = 366
+            this.value2 = [1440, this.times]
+          } else {
+            this.days = 365
+            // this.erday = 28
+            this.value2 = [1440, this.times]
+            console.log('平年')
+          }
+        },
+        resultFormat(a) {
+          // 平月
+          console.log(a)
+          if (a <= 31) {
+            return '1月' + a + '号'
+          }
+          if (31 < a && a <= 59) {
+            let b = a - 31
+            //  console.log(a)
+            return '2月' + b + '号'
+          }
+          if (59 < a && a <= 90) {
+            let b = a - 59
+            return '3月' + b + '号'
+          } else if (90 < a && a <= 120) {
+            let b = a - 90
+            return '4月' + b + '号'
+          } else if (120 < a && a <= 151) {
+            let b = a - 120
+            return '5月' + b + '号'
+          } else if (151 < a && a <= 181) {
+            let b = a - 151
+            return '6月' + b + '号'
+          } else if (181 < a && a <= 212) {
+            let b = a - 181
+            return '7月' + b + '号'
+          } else if (212 < a && a <= 243) {
+            let b = a - 212
+            return '8月' + b + '号'
+          } else if (243 < a && a <= 273) {
+            let b = a - 243
+            return '9月' + b + '号'
+          } else if (273 < a && a <= 304) {
+            let b = a - 273
+            return '10月' + b + '号'
+          } else if (304 < a && a <= 334) {
+            let b = a - 304
+            return '11月' + b + '号'
+          } else if (334 < a && a <= 365) {
+            let b = a - 334
+            return '12月' + b + '号'
+          }
+
+        },
+        resultFormat1(a) {
+          // 平月
+          // console.log(a)
+          if (a <= 31) {
+            return '1月' + a + '号'
+          }
+          if (31 < a && a <= 60) {
+            let b = a - 31
+            //  console.log(a)
+            return '2月' + b + '号'
+          }
+          if (60 < a && a <= 91) {
+            let b = a - 60
+            return '3月' + b + '号'
+          } else if (91 < a && a <= 121) {
+            let b = a - 91
+            return '4月' + b + '号'
+          } else if (121 < a && a <= 152) {
+            let b = a - 121
+            return '5月' + b + '号'
+          } else if (152 < a && a <= 182) {
+            let b = a - 152
+            return '6月' + b + '号'
+          } else if (182 < a && a <= 213) {
+            let b = a - 182
+            return '7月' + b + '号'
+          } else if (213 < a && a <= 244) {
+            let b = a - 213
+            return '8月' + b + '号'
+          } else if (244 < a && a <= 274) {
+            let b = a - 244
+            return '9月' + b + '号'
+          } else if (274 < a && a <= 305) {
+            let b = a - 274
+            return '10月' + b + '号'
+          } else if (305 < a && a <= 335) {
+            let b = a - 305
+            return '11月' + b + '号'
+          } else if (335 < a && a <= 366) {
+            let b = a - 335
+            return '12月' + b + '号'
+          }
+
+        },
+        getDay (val) {
+          //  365*24*60
+          let day = Math.floor((val/60)/24)
+          // console.log(day)
+          if(this.days == 365) {
+             return this.resultFormat(day)
+          }else {
+            return this.resultFormat1(day)
+          }
+          
+          // console.log(day)
+        },
+        getTime (val) {
+          // console.log()
+          let times = (val / 60) % 24
+          let tim = times.toFixed(2)
+          t = tim.split(".")
+          // console.log(t[1])
+          let time = Math.floor((val / 60) % 24) // 小时
+          // console.log(time)
+          return time + ':' + t[1]
+        },
+        changeval(val) {
+          // console.log(val)
+          this.date = this.getDay(val[0]) + '   ' + this.getTime(val[0])
+          this.date1 = this.getDay(val[1]) + '   ' + this.getTime(val[1])
+        },
+        formatdata(val) {
+           return this.getDay(val) + '   ' + this.getTime(val)
+          // console.log(val)
+          
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>
